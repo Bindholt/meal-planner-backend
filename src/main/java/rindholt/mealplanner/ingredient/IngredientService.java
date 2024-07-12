@@ -31,17 +31,17 @@ public class IngredientService {
         return ResponseEntity.noContent().build();
     }
 
-    public ResponseEntity<Ingredient> patchIngredient(Long id, Ingredient ingredient) {
+    public ResponseEntity<Ingredient> patchIngredient(Long id, Ingredient newIngredientInfo) {
         Optional<Ingredient> ingredientToUpdate = ingredientRepository.findById(id);
 
-        ingredientToUpdate.ifPresent(updatedIngredient -> {
-            if (ingredient.getName() != null) {
-                updatedIngredient.setName(ingredient.getName());
+        ingredientToUpdate.ifPresent(existingIngredientToUpdate -> {
+            if (newIngredientInfo.getName() != null) {
+                existingIngredientToUpdate.setName(newIngredientInfo.getName());
             }
-            if (ingredient.getUnit() != null) {
-                updatedIngredient.setUnit(ingredient.getUnit());
+            if (newIngredientInfo.getUnit() != null) {
+                existingIngredientToUpdate.setUnit(newIngredientInfo.getUnit());
             }
-            ingredientRepository.save(updatedIngredient);
+            ingredientRepository.save(existingIngredientToUpdate);
         });
 
         return ResponseEntity.of(ingredientToUpdate);

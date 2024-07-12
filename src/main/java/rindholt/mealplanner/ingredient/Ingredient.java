@@ -24,4 +24,5 @@ public class Ingredient {
         this.name = name;
         this.unit = unit;
     }
+
 }
