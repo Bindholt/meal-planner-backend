@@ -29,7 +29,7 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
-env.properties
+/MealPlanner/src/main/resources/env.properties
 ### VS Code ###
 .vscode/
 
