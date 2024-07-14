@@ -17,7 +17,8 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
-    private String procedure;
+    @Column(columnDefinition = "TEXT")
+    private String guide;
     private Long minutes;
     private String imageURL;
     private Long portions;
@@ -26,7 +27,7 @@ public class Recipe {
 
     public Recipe(String title, String procedure, Long minutes, String imageURL, Long portions, Set<DailyMealPlanIngredient> ingredients){
         this.title = title;
-        this.procedure = procedure;
+        this.guide = procedure;
         this.minutes = minutes;
         this.imageURL = imageURL;
         this.portions = portions;

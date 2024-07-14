@@ -37,7 +37,7 @@ public class RecipeService {
 
         recipeToUpdate.ifPresent(existingRecipeToUpdate -> {
             existingRecipeToUpdate.setTitle(recipe.getTitle());
-            existingRecipeToUpdate.setProcedure(recipe.getProcedure());
+            existingRecipeToUpdate.setGuide(recipe.getGuide());
             existingRecipeToUpdate.setPortions(recipe.getPortions());
             existingRecipeToUpdate.setImageURL(recipe.getImageURL());
             existingRecipeToUpdate.setMinutes(recipe.getMinutes());
