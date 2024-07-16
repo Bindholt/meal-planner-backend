@@ -25,9 +25,9 @@ public class Recipe {
     @ManyToMany
     private Set<DailyMealPlanIngredient> ingredients;
 
-    public Recipe(String title, String procedure, Long minutes, String imageURL, Long portions, Set<DailyMealPlanIngredient> ingredients){
+    public Recipe(String title, String guide, Long minutes, String imageURL, Long portions, Set<DailyMealPlanIngredient> ingredients){
         this.title = title;
-        this.guide = procedure;
+        this.guide = guide;
         this.minutes = minutes;
         this.imageURL = imageURL;
         this.portions = portions;
