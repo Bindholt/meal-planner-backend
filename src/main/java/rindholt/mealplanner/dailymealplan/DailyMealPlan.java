@@ -1,12 +1,10 @@
 package rindholt.mealplanner.dailymealplan;
 
-import com.fasterxml.jackson.datatype.jsr310.deser.OneBasedMonthDeserializer;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import rindholt.mealplanner.dailymealplaningredient.DailyMealPlanIngredient;
-import rindholt.mealplanner.ingredient.Ingredient;
+import rindholt.mealplanner.ingredientwithquantity.IngredientWithQuantity;
 
 import java.time.LocalDate;
 import java.util.Set;
@@ -21,22 +19,22 @@ public class DailyMealPlan {
     private Long id;
     private LocalDate date;
     @ManyToMany
-    private Set<DailyMealPlanIngredient> ingredients;
+    private Set<IngredientWithQuantity> ingredients;
 
     public DailyMealPlan(LocalDate date) {
         this.date = date;
     }
 
-    public DailyMealPlan(LocalDate date, Set<DailyMealPlanIngredient> ingredients) {
+    public DailyMealPlan(LocalDate date, Set<IngredientWithQuantity> ingredients) {
         this.date = date;
         this.ingredients = ingredients;
     }
 
-    public void addIngredient(DailyMealPlanIngredient ingredient) {
+    public void addIngredient(IngredientWithQuantity ingredient) {
         ingredients.add(ingredient);
     }
 
-    public void removeIngredient(DailyMealPlanIngredient ingredient) {
+    public void removeIngredient(IngredientWithQuantity ingredient) {
         ingredients.remove(ingredient);
     }
 

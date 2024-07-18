@@ -2,8 +2,7 @@ package rindholt.mealplanner.dailymealplan;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import rindholt.mealplanner.dailymealplaningredient.DailyMealPlanIngredient;
-import rindholt.mealplanner.ingredient.Ingredient;
+import rindholt.mealplanner.ingredientwithquantity.IngredientWithQuantity;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -25,7 +24,7 @@ public class DailyMealPlanService {
         return ResponseEntity.ok(dailyMealPlanRepository.save(dailyMealPlan));
     }
 
-    public ResponseEntity<DailyMealPlan> addIngredient(Long id, DailyMealPlanIngredient ingredient) {
+    public ResponseEntity<DailyMealPlan> addIngredient(Long id, IngredientWithQuantity ingredient) {
         Optional<DailyMealPlan> existingDailyMealPlan = dailyMealPlanRepository.findById(id);
 
         existingDailyMealPlan.ifPresent(dailyMealPlan -> {
@@ -35,7 +34,7 @@ public class DailyMealPlanService {
         return ResponseEntity.of(existingDailyMealPlan);
     }
 
-    public ResponseEntity<DailyMealPlan> deleteIngredient(Long id, DailyMealPlanIngredient ingredient) {
+    public ResponseEntity<DailyMealPlan> deleteIngredient(Long id, IngredientWithQuantity ingredient) {
         Optional<DailyMealPlan> existingDailyMealPlan = dailyMealPlanRepository.findById(id);
 
         existingDailyMealPlan.ifPresent(dailyMealPlan -> {

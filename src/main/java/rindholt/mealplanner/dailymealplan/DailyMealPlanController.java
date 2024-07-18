@@ -2,14 +2,12 @@ package rindholt.mealplanner.dailymealplan;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import rindholt.mealplanner.dailymealplaningredient.DailyMealPlanIngredient;
-import rindholt.mealplanner.ingredient.Ingredient;
+import rindholt.mealplanner.ingredientwithquantity.IngredientWithQuantity;
 
 import java.time.LocalDate;
-import java.util.Set;
 
 @RestController
-@RequestMapping("/dailymealplan")
+@RequestMapping("/dailymealplans")
 public class DailyMealPlanController {
     private final DailyMealPlanService dailyMealPlanService;
 
@@ -27,12 +25,12 @@ public class DailyMealPlanController {
     }
 
     @PostMapping("/{id}/addIngredient")
-    public ResponseEntity<DailyMealPlan> addIngredient(@PathVariable Long id, @RequestBody DailyMealPlanIngredient ingredient) {
+    public ResponseEntity<DailyMealPlan> addIngredient(@PathVariable Long id, @RequestBody IngredientWithQuantity ingredient) {
         return dailyMealPlanService.addIngredient(id, ingredient);
     }
 
     @DeleteMapping("/{id}/deleteIngredient")
-    public ResponseEntity<DailyMealPlan> deleteIngredient(@PathVariable Long id, @RequestBody DailyMealPlanIngredient ingredient) {
+    public ResponseEntity<DailyMealPlan> deleteIngredient(@PathVariable Long id, @RequestBody IngredientWithQuantity ingredient) {
         return dailyMealPlanService.deleteIngredient(id, ingredient);
     }
 

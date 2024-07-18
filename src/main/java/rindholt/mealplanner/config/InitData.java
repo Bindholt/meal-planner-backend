@@ -2,8 +2,8 @@ package rindholt.mealplanner.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import rindholt.mealplanner.dailymealplaningredient.DailyMealPlanIngredient;
-import rindholt.mealplanner.dailymealplaningredient.DailyMealPlanIngredientRepository;
+import rindholt.mealplanner.ingredientwithquantity.IngredientWithQuantity;
+import rindholt.mealplanner.ingredientwithquantity.IngredientWithQuantityRepository;
 import rindholt.mealplanner.ingredient.Ingredient;
 import rindholt.mealplanner.ingredient.IngredientRepository;
 import rindholt.mealplanner.ingredient.IngredientService;
@@ -20,14 +20,14 @@ public class InitData implements CommandLineRunner {
     private final RecipeService recipeService;
     private final IngredientRepository ingredientRepository;
     private final IngredientService ingredientService;
-    private final DailyMealPlanIngredientRepository dailyMealPlanIngredientRepository;
+    private final IngredientWithQuantityRepository ingredientWithQuantityRepository;
 
-    public InitData(RecipeRepository recipeRepository, RecipeService recipeService, IngredientRepository ingredientRepository, IngredientService ingredientService, DailyMealPlanIngredientRepository dailyMealPlanIngredientRepository) {
+    public InitData(RecipeRepository recipeRepository, RecipeService recipeService, IngredientRepository ingredientRepository, IngredientService ingredientService, IngredientWithQuantityRepository ingredientWithQuantityRepository) {
         this.recipeRepository = recipeRepository;
         this.recipeService = recipeService;
         this.ingredientRepository = ingredientRepository;
         this.ingredientService = ingredientService;
-        this.dailyMealPlanIngredientRepository = dailyMealPlanIngredientRepository;
+        this.ingredientWithQuantityRepository = ingredientWithQuantityRepository;
     }
 
     @Override
@@ -71,7 +71,7 @@ public class InitData implements CommandLineRunner {
     }
 
     private void addRecipes() {
-        Set<DailyMealPlanIngredient> ingredientsForRecipe = new HashSet<>();
+        Set<IngredientWithQuantity> ingredientsForRecipe = new HashSet<>();
 
         List<Ingredient> ingredients = new ArrayList<>();
         for (int i = 0; i <= 6; i++) {
@@ -80,9 +80,9 @@ public class InitData implements CommandLineRunner {
         }
 
         for (Ingredient ingredient : ingredients) {
-            DailyMealPlanIngredient dailyMealPlanIngredient = new DailyMealPlanIngredient(ingredient, 10L);
-            dailyMealPlanIngredientRepository.save(dailyMealPlanIngredient);
-            ingredientsForRecipe.add(dailyMealPlanIngredient);
+            IngredientWithQuantity ingredientWithQuantity = new IngredientWithQuantity(ingredient, 10L);
+            ingredientWithQuantityRepository.save(ingredientWithQuantity);
+            ingredientsForRecipe.add(ingredientWithQuantity);
         }
 
         String guide = "1. Peel the potatoes and carrots and cut them into small pieces.\n" +
@@ -95,7 +95,7 @@ public class InitData implements CommandLineRunner {
                 "8. Serve with rice.";
 
         Recipe recipe = new Recipe("Test Recipe", guide, 20L, "", 4L, ingredientsForRecipe);
-        recipeService.addRecipe(recipe);
+        recipeRepository.save(recipe);
     }
 
 }

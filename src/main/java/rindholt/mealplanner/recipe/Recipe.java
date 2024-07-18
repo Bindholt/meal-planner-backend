@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import rindholt.mealplanner.dailymealplaningredient.DailyMealPlanIngredient;
+import rindholt.mealplanner.ingredientwithquantity.IngredientWithQuantity;
 
 import java.util.Set;
 
@@ -23,9 +23,9 @@ public class Recipe {
     private String imageURL;
     private Long portions;
     @ManyToMany
-    private Set<DailyMealPlanIngredient> ingredients;
+    private Set<IngredientWithQuantity> ingredients;
 
-    public Recipe(String title, String guide, Long minutes, String imageURL, Long portions, Set<DailyMealPlanIngredient> ingredients){
+    public Recipe(String title, String guide, Long minutes, String imageURL, Long portions, Set<IngredientWithQuantity> ingredients){
         this.title = title;
         this.guide = guide;
         this.minutes = minutes;
@@ -34,11 +34,11 @@ public class Recipe {
         this.ingredients = ingredients;
     }
 
-    public void addIngredient(DailyMealPlanIngredient ingredient) {
+    public void addIngredient(IngredientWithQuantity ingredient) {
         ingredients.add(ingredient);
     }
 
-    public void removeIngredient(DailyMealPlanIngredient ingredient) {
+    public void removeIngredient(IngredientWithQuantity ingredient) {
         ingredients.remove(ingredient);
     }
 

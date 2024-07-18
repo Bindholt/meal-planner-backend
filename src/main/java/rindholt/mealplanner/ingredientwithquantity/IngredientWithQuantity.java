@@ -1,4 +1,4 @@
-package rindholt.mealplanner.dailymealplaningredient;
+package rindholt.mealplanner.ingredientwithquantity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -10,7 +10,7 @@ import rindholt.mealplanner.ingredient.Ingredient;
 @NoArgsConstructor //laver en tom constructor
 @Getter //laver getters
 @Setter //laver setters
-public class DailyMealPlanIngredient {
+public class IngredientWithQuantity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -18,7 +18,7 @@ public class DailyMealPlanIngredient {
     private Ingredient ingredient;
     private Long quantity;
 
-    public DailyMealPlanIngredient(Ingredient ingredient, Long quantity) {
+    public IngredientWithQuantity(Ingredient ingredient, Long quantity) {
         this.ingredient = ingredient;
         this.quantity = quantity;
     }

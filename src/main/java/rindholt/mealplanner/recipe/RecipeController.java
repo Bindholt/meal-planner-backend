@@ -2,11 +2,13 @@ package rindholt.mealplanner.recipe;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import rindholt.mealplanner.recipe.dtos.RecipeRequestDTO;
+import rindholt.mealplanner.recipe.dtos.RecipeResponseDTO;
 
 import java.util.List;
 
 @RestController
-@RequestMapping("/recipe")
+@RequestMapping("/recipes")
 public class RecipeController {
     private final RecipeService recipeService;
 
@@ -15,22 +17,22 @@ public class RecipeController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Recipe>> getRecipes() {
+    public ResponseEntity<List<RecipeResponseDTO>> getRecipes() {
         return recipeService.getRecipes();
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Recipe> getRecipe(@PathVariable Long id) {
+    public ResponseEntity<RecipeResponseDTO> getRecipe(@PathVariable Long id) {
         return ResponseEntity.of(recipeService.getRecipe(id));
     }
 
     @PostMapping
-    public ResponseEntity<Recipe> addRecipe(@RequestBody Recipe recipe) {
+    public ResponseEntity<RecipeResponseDTO> addRecipe(@RequestBody RecipeRequestDTO recipe) {
         return recipeService.addRecipe(recipe);
     }
 
     @PutMapping
-    public ResponseEntity<Recipe> updateRecipe(@RequestBody Recipe recipe) {
+    public ResponseEntity<RecipeResponseDTO> updateRecipe(@RequestBody RecipeRequestDTO recipe) {
         return recipeService.updateRecipe(recipe);
     }
 
