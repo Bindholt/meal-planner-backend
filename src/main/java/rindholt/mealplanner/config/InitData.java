@@ -96,6 +96,25 @@ public class InitData implements CommandLineRunner {
 
         Recipe recipe = new Recipe("Test Recipe", guide, 20L, "", 4L, ingredientsForRecipe);
         recipeRepository.save(recipe);
+
+        Recipe recipe1 = new Recipe("Test Recipe 1", guide, 20L, "", 4L, ingredientsForRecipe);
+        recipeRepository.save(recipe1);
+
+        Recipe recipe2 = new Recipe("Test Recipe 2", guide, 20L, "", 4L, ingredientsForRecipe);
+        recipeRepository.save(recipe2);
+
+        Recipe recipe3 = new Recipe("Test Recipe 3", guide, 20L, "", 4L, ingredientsForRecipe);
+        recipeRepository.save(recipe3);
+
+        Recipe recipe4 = new Recipe("Test Recipe 4", guide, 20L, "", 4L, ingredientsForRecipe);
+        recipeRepository.save(recipe4);
+
+        Recipe recipe5 = new Recipe("Test Recipe 5", guide, 20L, "", 4L, ingredientsForRecipe);
+        recipeRepository.save(recipe5);
+
+        Recipe recipe6 = new Recipe("Test Recipe 6", guide, 20L, "", 4L, ingredientsForRecipe);
+        recipeRepository.save(recipe6);
+
     }
 
 }
